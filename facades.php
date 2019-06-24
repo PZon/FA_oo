@@ -13,3 +13,19 @@
 		 $this->registerForm->displayRegisterFormModal();
 	 }
  }
+ 
+ class ContentRegisterForm{
+	 private $framework;
+	 private $registerForm;
+	 
+	 public function __construct(){
+		 $this->framework=new Framework();
+		 $this->registerForm=new RegisterForm();
+	 }
+	 
+	 public function displayPageContents(){
+		 $this->framework->displayTopPage();
+		 $this->registerForm->displayRegisterForm();
+		 $this->framework->displayBottomPage();
+	 }
+ }
