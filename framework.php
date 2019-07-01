@@ -193,4 +193,33 @@ class Framework{
 	</div>
 <?php	
  }// displayMainMenu end
+ 
+  function displayStatementHeader($view){
+?>
+	<main>
+	<div id="mainPage" class="container">
+	 <div class="row mb-5">
+	   <div class="col-sm-12 col-md-8">
+		<h5>Welcome to Finance Assitant: <br /><?= $_SESSION['userVerified']?></h5>
+	   </div>
+	   <div class="col-sm-12 col-md-4">
+		<div class="dropdown">
+		  <button class="btn btn-warning dropdown-toggle" type="button" id="menuStatement" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class='fas fa-chart-line'></i> Statements</button>
+		  <div class="dropdown-menu" aria-labelledby="menuStatement">
+		   <a class="dropdown-item" href="statements.php?view=cm">&#9656; Current Month</a>
+		   <a class="dropdown-item" href="statements.php?view=pm">&#9656; Previous Month</a>
+		   <a class="dropdown-item" href="statements.php?view=cp">&#9656; Custom Period</a>
+		  </div>
+		</div>
+	   </div>
+	  </div>
+	<?php
+		if($view=='cp'){
+			SupportiveMethods::displayStatementDatepicker();
+		}
+	?>
+	<hr>
+<?php
+ }
+ 
 }//class end
