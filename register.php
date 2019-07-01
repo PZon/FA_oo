@@ -16,7 +16,7 @@ class RegisterFormModal {
 			</button>
 		  </div>
 		  <div class="modal-body">
-			<form action="registerVeryfication.php" method="post">
+			<form action="registerVerification.php" method="post">
 			  <div class="form-group">
 				<label for="nick" class="col-form-label">*Login:</label>
 				<input type="text" class="form-control" id="nick" name="nick"required>

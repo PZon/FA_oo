@@ -20,7 +20,7 @@ class FrontPage{
 				 unset($_SESSION['logInError']);
 			 }
 			?>
-			<form action="loginVeryfication.php" method="post">
+			<form action="loginVerification.php" method="post">
 			  <div class="form-group">
 			   <label for="InputLogin">Login</label>
 				<input type="text" class="form-control" id="InputLogin" aria-describedby="InputLogin" placeholder="Enter Login" name="nick" required>
