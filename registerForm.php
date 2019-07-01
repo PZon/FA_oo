@@ -19,7 +19,7 @@ class RegisterForm{
  }
  ?>
   <h5>Account Data:</h5><br>
-	<form action="registerVeryfication.php" method="post">
+	<form action="registerVerification.php" method="post">
 	 <input type="text" class="form-control" id="userId" hidden>
 	 <div class="row justify-content-md-center">
 	  <div class="form-group col-md-4">
@@ -64,5 +64,5 @@ class RegisterForm{
  }
 }
 /*********************************************/
-$pageContenet=new ContentRegisterForm();
-$pageContenet->displayPageContents();
+$pageContent=new ContentRegisterForm();
+$pageContent->displayPageContents();

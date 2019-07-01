@@ -6,12 +6,12 @@ if(isset($_SESSION['userVerified'])){
 	header('Location:statements.php?view=cm');
 }
 
-$topPage=new Framework();
+$pageFrame=new Framework();
 $frontPage=new ContentFrontPage();
-$topPage->displayTopPage();
-$topPage->displayCarousel();
+$pageFrame->displayTopPage();
+$pageFrame->displayCarousel();
 $frontPage->displayFrontPage();
 
 
-$topPage->displayBottomPage();
+$pageFrame->displayBottomPage();
 ?>
