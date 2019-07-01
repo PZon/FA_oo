@@ -1,18 +1,18 @@
 <?php
 class SupportiveMethods{
-	public static function verifyUser(){
+ public static function verifyUser(){
 	 if(!isset($_SESSION['userVerified'])){
 	 header('location:index.php');
      exit();
 	 }
 	}
 	
-	public static function displayStatementDatepicker(){
+ public static function displayStatementDatepicker(){
 ?>
   <!-- datepicker for custom period -->
  <div class="row">
 	<h5 class="mb-md-3 col-md-12">Choose statement period:</h5>
-</div>
+ </div>
 	<form action="" method="post">
 	 <div class="form-row justify-content-md-center">
 	  <div class="form-group m-xs-1 col-md-4">
@@ -31,6 +31,6 @@ class SupportiveMethods{
     <!-- end datepicker -->
 <?php
  } 
-
+ 
 }//class end;
 ?>

@@ -3,13 +3,10 @@ session_start();
 require_once('functions&classes.php');
 
 SupportiveMethods::verifyUser();
-
-$pageFrame=new Framework();
-$incomes=new Income();
-$expense=new Expense();
-
 $view=$_GET['view'];
-
+$pageFrame=new Framework();
+$income=new Income();
+$expense=new Expense();
 
 $currentYear=date('Y');
 $currentMonth=date('m');
@@ -20,21 +17,25 @@ $prevYM=$currentYear.'-'.$prevMonth.'-01';
 $prevYMEnd=$currentYear.'-'.$prevMonth.'-31';
 
 if($view=='cm'||($view=='cp' && !isset($_POST['dateFrom']))){
- $incomes->getIncomesCM($_DB, $currentYM);
- //$expenses->getExpensesCM($_DB, $currentYM);
+ $incomes=$income->getIncomesCM($_DB, $currentYM);
+ $expenses=$expense->getExpensesCM($_DB, $currentYM);
 }else if($view=='pm'){
- $incomes->getIncomesPM($_DB, $prevYM, $prevYMEnd);
- //$expenses->getExpensesPM($_DB, $prevYM, $prevYMEnd);
+ $incomes=$income->getIncomesPM($_DB, $prevYM, $prevYMEnd);
+ $expenses=$expense->getExpensesPM($_DB, $prevYM, $prevYMEnd);
 }else if($view=='cp' && isset($_POST['dateFrom'])){
  $dateFrom=$_POST['dateFrom'];
  $dateTo=$_POST['dateTo'];
- $incomes->getIncomesCP($_DB, $dateFrom, $dateTo);
- //$expenses->getExpensesCP($_DB, $dateFrom, $dateTo);
+ $incomes=$income->getIncomesCP($_DB, $dateFrom, $dateTo);
+ $expenses=$expense->getExpensesCP($_DB, $dateFrom, $dateTo);
 }
 /******************/
 $pageFrame->displayTopPage();
 $pageFrame->displayMainMenu();
-$incomes->displayStatementHeader($view);
+$pageFrame->displayStatementHeader($view);
+$income->displayIncomes($incomes);
+$expense->displayExpense($expenses);
+$income->displayAddIncomeB($income->getIncomCat($_DB));
+$expense->displayAddExpenseB($expense->getPayCat($_DB),$expense->getExpenseCat($_DB));
 
 $pageFrame->displayBottomPage();
 
