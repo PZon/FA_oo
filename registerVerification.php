@@ -4,7 +4,7 @@ require_once('functions&classes.php');
 
 class RegisterVerify{
  
- function verifyRegistration($_DB){
+function verifyRegistration($_DB){
   $nick=filter_input(INPUT_POST,'nick',FILTER_SANITIZE_STRING);
   $nick = strtoupper($nick);
   $email=filter_input(INPUT_POST,'email',FILTER_VALIDATE_EMAIL);

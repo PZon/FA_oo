@@ -237,7 +237,84 @@ function getPayCat($_DB){
  $catP=$sqlQueryP->fetchAll();
  return $catP;
 }
- 
+
+ function displayAddExpenseForm($catE, $catP){
+?>
+
+<main>
+ <article>
+ <div id="mainPage" class="container">
+  <div class="row">
+   <div class="col-sm-12 ">
+    <h5>Welcome to Finance Assitant: <?=$_SESSION['userVerified']?></h5>
+   </div>
+  </div><hr>
+  <h5>Add Expese</h5><br>
+    <?php
+	if(isset($_SESSION['addTransError'])){
+		echo '<p class="text-danger text-center">';
+		echo $_SESSION['addTransError'];
+		echo '</p>';
+		unset ($_SESSION['addTransError']);
+	}
+	?>
+	<form action="addTransactionVerify.php" method="post">
+	 <input type="text" class="form-control" id="userId" value="<?= $_SESSION['idUser']?>" name="idUser" hidden>
+	 <input type="text" class="form-control" id="transactionType" value="E" name="transactionType" hidden>
+	 <div class="form-row justify-content-md-center">
+	  <div class="form-group col-md-3">
+		<label for="transactionDate" class="col-form-label">Date:</label>
+		<input type="text" class="form-control" id="transactionDate" name="transactionDate" required>
+	  </div>
+	  <div class="form-group col-md-3">
+		<label for="amount" class="col-form-label">Amount:</label>
+		<input type="text" class="form-control" id="amount" name="amount" required>
+	  </div>
+	  <div class="form-group col-md-3">
+		<label for="payType" class="col-form-label">Payment type:</label>
+		<div class="input-group mb-3">
+		  <select class="custom-select" id="PayType" name="payType">
+			<option value="0">Choose...</option>
+			<?php
+			foreach($catP as $row){
+			echo "<option value=\"{$row['idCatPay']}\">".$row['nameCatPay']."</option>";
+			}
+			?>
+		  </select>
+		</div>
+	  </div>
+	 </div>
+	 <div class="form-row justify-content-md-center">
+	  <div class="form-group col-md-3">
+		<label for="Category" class="col-form-label">Category:</label>
+		<div class="input-group mb-3">
+		  <select class="custom-select" id="selectCatE" name="Category"  >
+			<option value="0">Choose...</option>
+			<?php
+			foreach($catE as $row){
+			echo "<option value=\"{$row['idCatE']}\">".$row['nameCatE']."</option>";
+			}
+			?>
+		  </select>
+		</div>
+	  </div>
+	  <div class="form-group col-md-6">
+		<label for="description" class="col-form-label">Description:</label>
+		<input type="text" class="form-control" id="description" maxlength="50" name="description"  required>
+	  </div>
+	 </div>
+	 <div class="row justify-content-sm-center">
+	  <button type="submit" class="btn btn-warning col-sm-4 m-md-4">Add transaction</button>
+	 </div>
+	 <div  class="row justify-content-sm-center">
+	  <a  class="btn btn-outline-warning col-sm-3 m-md-3 " role="button">Add expense category</a>
+	 </div>
+	</form>
+ </div>
+ </article>
+</main>	
+<?php
+} 
  
  
 }//end class
