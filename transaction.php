@@ -4,7 +4,7 @@ require_once('functions&classes.php');
 
 SupportiveMethods::verifyUser();
 $transactionType=$_GET['type'];
-$pageFrame=new Framework();
+$pageFrame=new MainMenu();
 $income=new Income();
 $expense=new Expense();
 /***********************/

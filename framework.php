@@ -97,9 +97,11 @@ class Framework{
 	</body>
 	</html>	
 <?php
-}//end bottomPage;
+ }//end bottomPage;
+}//class end
 
- public function displayCarousel(){
+class Carousel extends Framework {
+	public function displayCarousel(){
 ?>
 <!-- Carousel -->
   <div id="myCarousel" class="carousel slide mb-3 d-none d-md-block" data-ride="carousel">
@@ -147,9 +149,12 @@ class Framework{
     </a>
   </div>
 <?php
-}// end carousel	
+ }// end carousel
+	
+}//end class;
 
- public function displayMainMenu(){
+class MainMenu extends Framework{
+ function displayMainMenu(){
  ?>
 	<div id="mainMenu" class="stickyToTop">
 	<nav class="navbar navbar-light navbar-expand-md mb-md-5 ">
@@ -192,9 +197,11 @@ class Framework{
 	</nav>
 	</div>
 <?php	
- }// displayMainMenu end
- 
-  function displayStatementHeader($view){
+ }// displayMainMenu
+}//end class;
+
+class StatementHeader{
+ function displayStatementHeader($view){
 ?>
 	<main>
 	<div id="mainPage" class="container">
@@ -220,6 +227,5 @@ class Framework{
 	?>
 	<hr>
 <?php
- }
- 
-}//class end
+ } //end function
+}//end class

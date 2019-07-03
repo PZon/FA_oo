@@ -29,7 +29,3 @@
 		 $this->framework->displayBottomPage();
 	 }
  }
- 
- class ContentStatement{
-	 
- }

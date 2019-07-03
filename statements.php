@@ -4,7 +4,9 @@ require_once('functions&classes.php');
 
 SupportiveMethods::verifyUser();
 $view=$_GET['view'];
-$pageFrame=new Framework();
+
+$pageFrame=new MainMenu();
+$header=new StatementHeader();
 $income=new Income();
 $expense=new Expense();
 
@@ -29,15 +31,17 @@ if($view=='cm'||($view=='cp' && !isset($_POST['dateFrom']))){
  $expenses=$expense->getExpensesCP($_DB, $dateFrom, $dateTo);
 }
 /******************/
+
 $pageFrame->displayTopPage();
 $pageFrame->displayMainMenu();
-$pageFrame->displayStatementHeader($view);
+$header->displayStatementHeader($view);
 $income->displayIncomes($incomes);
 $expense->displayExpense($expenses);
 $income->displayAddIncomeB($income->getIncomCat($_DB));
 $expense->displayAddExpenseB($expense->getPayCat($_DB),$expense->getExpenseCat($_DB));
 
 $pageFrame->displayBottomPage();
+
 
 
 ?>
